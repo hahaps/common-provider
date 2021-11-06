@@ -10,7 +10,7 @@ type Credential struct {
 }
 
 type Resource interface {
-	Init(credential Credential)
+	Init(credential Credential) error
 	Run(args ...interface{}) ([]interface{}, string, map[string]interface{}, error)
 }
 
