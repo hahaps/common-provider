@@ -11,7 +11,7 @@ type Credential struct {
 
 type Resource interface {
 	Init(credential Credential) error
-	Run(args ...interface{}) ([]interface{}, string, map[string]interface{}, error)
+	Run(params map[string]interface{}) ([]interface{}, string, map[string]interface{}, error)
 }
 
 type Provider interface {
