@@ -6,35 +6,36 @@ import (
 	"reflect"
 )
 
+const (
+	DefaultLimit int = 50
+)
+
 type Scheme struct {
 	Param    string
 	Required bool
-	Type reflect.Kind
+	Type     reflect.Kind
+	Default  interface{}
 }
 
-func CheckParam(params map[string]interface{}, schemes []Scheme) error {
+func CheckParam(params map[string]interface{}, schemes []Scheme) (map[string]interface{}, error) {
 	for _, scheme := range schemes {
 		param, ok := params[scheme.Param]
 		if !ok {
-			return errors.New(
-				fmt.Sprintf("Param[%v] should be specifid",
-					scheme.Param))
+			params[scheme.Param] = scheme.Default
+			param = scheme.Default
 		}
 		if reflect.ValueOf(param).Kind() != scheme.Type {
-			return errors.New(
+			return params, errors.New(
 				fmt.Sprintf("Param[%v] should be %v",
 					scheme.Param, scheme.Type))
 		}
-		if !scheme.Required {
-			return nil
-		}
-		if scheme.Type == reflect.String {
+		if !scheme.Required && scheme.Type == reflect.String {
 			if param.(string) == "" {
-				return errors.New(
+				return params, errors.New(
 					fmt.Sprintf("Param[%v] could not be empty",
 						scheme.Param))
 			}
 		}
 	}
-	return nil
+	return params, nil
 }

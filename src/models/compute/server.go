@@ -15,7 +15,7 @@ type ServerModel struct {
     Index string
     Checksum string
     required []string
-    
+
     // provider id
     ProviderId string
     // Cloud Provider Name
@@ -54,14 +54,6 @@ type ServerModel struct {
     ImageOsType string
     // Image Extra info
     ImageExtra map[string]interface{}
-    // System Disk Id
-    SystemDiskId string
-    // System Disk Size
-    SystemDiskSize int
-    // System Disk Type
-    SystemDiskType string
-    // Data disks info
-    DataDisks map[string]interface{}
     // IP addr of primary nic
     PrimaryNicIp string
     // IP protocol of to primary nic
@@ -71,12 +63,12 @@ type ServerModel struct {
     // Floating IP protocol bind to primary nic
     PrimaryNicFloatingIpProtocol string
     // Network of primary nic
-    PrimaryNetworkId int
+    PrimaryNetworkId string
     // Subnet of primary nic
     PrimarySubnetId string
-    // Data disks info
+    // Secondary nics info
     SecondaryNics map[string]interface{}
-    // Data disks info
+    // Security group info
     SecurityGroups map[string]string
     // Server tags
     Tags string
