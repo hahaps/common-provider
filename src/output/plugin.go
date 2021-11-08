@@ -14,7 +14,7 @@ type Params struct {
 	Timestamp int64
 	Resource  string
 	Setting   map[string]interface{}
-	Input     []interface{}
+	Input     []map[string]interface{}
 	Query     map[string]interface{}
 }
 
