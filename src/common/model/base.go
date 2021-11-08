@@ -4,6 +4,7 @@ package model
 
 import (
 	"crypto/md5"
+	"fmt"
 	"reflect"
 	"strings"
 	"unsafe"
@@ -31,13 +32,17 @@ func Checksum(val *string) string {
 	return string(md5.New().Sum(String2Bytes(val)))
 }
 
-func GetValFromKeys(obj interface{}, k string) string {
+func GetValFromKeys(obj interface{}, k string) (str string) {
 	keys := strings.Split(k, ",")
-	str := ""
 	val := reflect.ValueOf(obj).Elem()
-	for _, key := range keys {
+	vLen := len(keys)
+	for i, key := range keys {
 		key = strings.TrimSpace(key)
-		str += val.FieldByName(key).String()
+		if i + 1 < vLen {
+			str += fmt.Sprint(val.FieldByName(key)) + "-"
+		} else {
+			str += fmt.Sprint(val.FieldByName(key))
+		}
 	}
 	return str
 }

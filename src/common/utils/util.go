@@ -60,8 +60,11 @@ func SafeBool(ptr *bool, def bool) bool {
 }
 
 func CheckQueryKeys(query map[string]interface{}, obj interface{}) bool {
+	if reflect.ValueOf(obj).Kind() != reflect.Struct {
+		return false
+	}
 	val := reflect.TypeOf(obj)
-	fLen := val.Len()
+	fLen := val.NumField()
 	for key, _ := range query {
 		exist := false
 		for i := 0; i < fLen; i++ {

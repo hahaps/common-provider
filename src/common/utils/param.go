@@ -24,17 +24,22 @@ func CheckParam(params map[string]interface{}, schemes []Scheme) (map[string]int
 			params[scheme.Param] = scheme.Default
 			param = scheme.Default
 		}
-		if reflect.ValueOf(param).Kind() != scheme.Type {
+		if scheme.Required && param == nil {
 			return params, errors.New(
-				fmt.Sprintf("Param[%v] should be %v",
-					scheme.Param, scheme.Type))
+				fmt.Sprintf("Param[%v] should be specified",
+					scheme.Param))
 		}
-		if !scheme.Required && scheme.Type == reflect.String {
-			if param.(string) == "" {
+		if scheme.Required && scheme.Type == reflect.String {
+			if param == nil || param.(string) == "" {
 				return params, errors.New(
 					fmt.Sprintf("Param[%v] could not be empty",
 						scheme.Param))
 			}
+		}
+		if reflect.ValueOf(param).Kind() != scheme.Type {
+			return params, errors.New(
+				fmt.Sprintf("Param[%v] should be %v",
+					scheme.Param, scheme.Type))
 		}
 	}
 	return params, nil
