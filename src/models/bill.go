@@ -41,11 +41,11 @@ type InstanceBillModel struct {
     // Resource Region
     Region string
     // Official price
-    PretaxGrossAmount string
+    PretaxGrossAmount float64
     // Pretax amount
-    PretaxAmount string
+    PretaxAmount float64
     // Deducated amount
-    DeductionAmount string
+    DeductionAmount float64
     // Instance Bill Extra info
     Extra map[string]interface{}
     model.BaseModel

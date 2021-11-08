@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"reflect"
 	"strings"
 )
 
@@ -42,10 +43,36 @@ func SafeInt32(ptr *int32) int32 {
 	}
 }
 
+func SafeFloat32(ptr *float32) float32 {
+	if ptr == nil {
+		return 0
+	} else {
+		return *ptr
+	}
+}
+
 func SafeBool(ptr *bool, def bool) bool {
 	if ptr == nil {
 		return def
 	} else {
 		return *ptr
 	}
+}
+
+func CheckQueryKeys(query map[string]interface{}, obj interface{}) bool {
+	val := reflect.TypeOf(obj)
+	fLen := val.Len()
+	for key, _ := range query {
+		exist := false
+		for i := 0; i < fLen; i++ {
+			if val.Field(i).Name == key {
+				exist = true
+				break
+			}
+		}
+		if !exist {
+			return false
+		}
+	}
+	return true
 }
