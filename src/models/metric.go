@@ -26,6 +26,8 @@ type MetricModel struct {
     CloudType string
     // Cloud AccountId
     AccountId string
+    // Metric time
+    MetricTime float64
     // Instance ID
     InstanceId string
     // Cloud Extra info
@@ -64,9 +66,9 @@ func (m *MetricModel)CheckRequired() (bool, string) {
 
 func NewMetricModel() *MetricModel {
     m := &MetricModel{}
-    m.IndexKeys = "Id"
-    m.ChecksumKeys = "Name, Type"
-    m.required = []string{"Name", "Unit", "Value", "CloudType", "AccountId", "InstanceId", }
+    m.IndexKeys = "InstanceId, Name"
+    m.ChecksumKeys = ""
+    m.required = []string{"Name", "Unit", "CloudType", "AccountId", "InstanceId", }
 
     return m
 }

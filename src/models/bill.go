@@ -83,7 +83,7 @@ func (m *InstanceBillModel)CheckRequired() (bool, string) {
 func NewInstanceBillModel() *InstanceBillModel {
     m := &InstanceBillModel{}
     m.IndexKeys = "CloudType, AccountId, ProductCode, InstanceId"
-    m.ChecksumKeys = "Name, Tags, PretaxGrossAmount, PretaxAmount, DeductionAmount"
+    m.ChecksumKeys = "InstanceName, Tags, PretaxGrossAmount, PretaxAmount, DeductionAmount"
     m.required = []string{"BillingCycle", "CloudType", "AccountId", "InstanceId", "PretaxGrossAmount", "PretaxAmount", "DeductionAmount", }
 
     return m
