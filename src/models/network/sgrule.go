@@ -15,7 +15,7 @@ type SGRuleModel struct {
     Index string
     Checksum string
     required []string
-    
+    Deleted int64
     // Security group Id
     SGId string
     // Cloud Provider Name

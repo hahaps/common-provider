@@ -15,7 +15,7 @@ type SecurityGroupModel struct {
     Index string
     Checksum string
     required []string
-
+    Deleted int64
     // provider id
     ProviderId string
     // Cloud Provider Name

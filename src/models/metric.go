@@ -15,7 +15,7 @@ type MetricModel struct {
     Index string
     Checksum string
     required []string
-    
+    Deleted int64
     // Metric Name
     Name string
     // Metric unit

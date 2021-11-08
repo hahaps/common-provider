@@ -15,7 +15,7 @@ type InstanceBillModel struct {
     Index string
     Checksum string
     required []string
-    
+    Deleted int64
     // Billing cycle
     BillingCycle string
     // Billing date

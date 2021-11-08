@@ -15,7 +15,7 @@ type RegionModel struct {
     Index string
     Checksum string
     required []string
-    
+    Deleted int64
     // Cloud Region Name
     Name string
     // Cloud Region ID

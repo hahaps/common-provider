@@ -1,6 +1,8 @@
 package utils
 
-import "strings"
+import (
+	"strings"
+)
 
 func JoinStringPtr(elems []*string, sep string) string {
 	switch len(elems) {
