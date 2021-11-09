@@ -26,14 +26,20 @@ type DiskModel struct {
     RegionId string
     // Disk name
     Name string
+    // Disk create time
+    CreateTime string
+    // Expired time
+    ExpiredTime string
     // Disk type
     Type string
+    // Category
+    Category string
     // Disk size
-    Size string
+    Size int32
     // Disk Status
     Status string
     // Disk Attach Status
-    AttachStatus string
+    Attachments []map[string]interface{}
     // Attached Server Id
     AttachedServer string
     // Disk description
@@ -77,8 +83,8 @@ func (m *DiskModel)CheckRequired() (bool, string) {
 func NewDiskModel() *DiskModel {
     m := &DiskModel{}
     m.IndexKeys = "CloudType, AccountId, ProviderId"
-    m.ChecksumKeys = "Name, Size, Status, AttachStatus, AttachedServer, Description, Tags"
-    m.required = []string{"ProviderId", "CloudType", "AccountId", "Size", "Status", "AttachStatus", }
+    m.ChecksumKeys = "Name, Size, Status, Attachments, AttachedServer, Description, Tags"
+    m.required = []string{"ProviderId", "CloudType", "AccountId", "Size", "Status", }
 
     return m
 }

@@ -26,6 +26,8 @@ type NetworkModel struct {
     RegionId string
     // Network name
     Name string
+    // Network Create Time
+    CreateTime string
     // Network type
     Type string
     // Network CIDR

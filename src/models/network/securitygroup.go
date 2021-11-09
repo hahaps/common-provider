@@ -27,6 +27,8 @@ type SecurityGroupModel struct {
     // SecurityGroup group name
     Name string
     // SecurityGroup group description
+    // Security group Create Time
+    CreateTime string
     Description string
     // SecurityGroup group tags
     Tags string

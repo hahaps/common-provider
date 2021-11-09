@@ -27,9 +27,11 @@ type ImageModel struct {
     // Image name
     Name string
     // Image OS type
+    // Image Create Time
+    CreateTime string
     OSType string
     // Image size
-    Size string
+    Size int32
     // Image description
     Description string
     // Image Status

@@ -28,6 +28,8 @@ type NicModel struct {
     NetworkId string
     // Subnet ID
     SubnetId string
+    // Nic Create Time
+    CreateTime string
     // Nic name
     Name string
     // Nic type
@@ -43,6 +45,7 @@ type NicModel struct {
     // Network description
     Description string
     // Network tags
+    InstanceId string
     Tags string
     // Network Extra info
     Extra map[string]interface{}

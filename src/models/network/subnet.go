@@ -26,8 +26,11 @@ type SubnetModel struct {
     RegionId string
     // Subnet name
     Name string
+    // Subnet Create Time
+    CreateTime string
     // Subnet CIDR
     CIDR string
+    NetworkId string
     // Subnet Status
     Status string
     // Subnet description

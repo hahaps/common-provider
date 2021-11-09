@@ -49,7 +49,7 @@ func CheckParam(params map[string]interface{}, schemes []Scheme) (map[string]int
 			}
 		}
 		pType := reflect.ValueOf(param).Kind()
-		if pType != scheme.Type {
+		if param != nil && pType != scheme.Type {
 			if pType == Float64 && scheme.Type == Int {
 				params[scheme.Param], err = strconv.Atoi(fmt.Sprint(reflect.ValueOf(param)))
 				if err != nil {
